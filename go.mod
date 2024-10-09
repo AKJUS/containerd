@@ -7,7 +7,7 @@ require (
 	github.com/AdaLogics/go-fuzz-headers v0.0.0-20230811130428-ced1acdcaa24
 	github.com/AdamKorcz/go-118-fuzz-build v0.0.0-20230306123547-8075edf89bb0
 	github.com/Microsoft/go-winio v0.6.2
-	github.com/Microsoft/hcsshim v0.12.6
+	github.com/Microsoft/hcsshim v0.12.7
 	github.com/checkpoint-restore/checkpointctl v1.2.1
 	github.com/checkpoint-restore/go-criu/v7 v7.2.0
 	github.com/containerd/btrfs/v2 v2.0.0
@@ -39,7 +39,7 @@ require (
 	github.com/google/go-cmp v0.6.0
 	github.com/google/uuid v1.6.0
 	github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus v1.0.1
-	github.com/intel/goresctrl v0.7.0
+	github.com/intel/goresctrl v0.8.0
 	github.com/klauspost/compress v1.17.10
 	github.com/mdlayher/vsock v1.2.1
 	github.com/moby/locker v1.0.1
@@ -72,10 +72,10 @@ require (
 	go.opentelemetry.io/otel/trace v1.30.0
 	golang.org/x/mod v0.21.0
 	golang.org/x/sync v0.8.0
-	golang.org/x/sys v0.25.0
+	golang.org/x/sys v0.26.0
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1
-	google.golang.org/grpc v1.67.0
-	google.golang.org/protobuf v1.34.2
+	google.golang.org/grpc v1.67.1
+	google.golang.org/protobuf v1.35.1
 	k8s.io/apimachinery v0.31.1
 	k8s.io/client-go v0.31.1
 	k8s.io/component-base v0.31.1
@@ -149,3 +149,5 @@ require (
 	sigs.k8s.io/yaml v1.4.0 // indirect
 	tags.cncf.io/container-device-interface/specs-go v0.8.0 // indirect
 )
+
+replace github.com/containerd/containerd/api => ./api
