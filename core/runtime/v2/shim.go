@@ -527,7 +527,7 @@ func (s *shimTask) delete(ctx context.Context, sandboxed bool, removeTask func(c
 		ID: s.ID(),
 	})
 	if shimErr != nil {
-		log.G(ctx).WithField("id", s.ID()).WithError(shimErr).Debug("failed to delete task")
+		log.G(ctx).WithField("id", s.ID()).WithError(shimErr).Error("failed to delete task")
 		if !errors.Is(shimErr, ttrpc.ErrClosed) {
 			shimErr = errgrpc.ToNative(shimErr)
 			if !errdefs.IsNotFound(shimErr) {
@@ -554,6 +554,11 @@ func (s *shimTask) delete(ctx context.Context, sandboxed bool, removeTask func(c
 	// REF: https://github.com/containerd/containerd/issues/4769
 	if shimErr == nil {
 		removeTask(ctx, s.ID())
+	}
+
+	const supportSandboxAPIVersion = 3
+	if _, apiVer := s.ShimInstance.Endpoint(); apiVer < supportSandboxAPIVersion {
+		sandboxed = false
 	}
 
 	// Don't shutdown sandbox as there may be other containers running.
